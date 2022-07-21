@@ -1,11 +1,14 @@
 import os
 import psycopg2
 import psycopg2.extras
+from dotenv import load_dotenv
 
+load_dotenv()
 
 def establish_connection(connection_data=None):
     if connection_data is None:
-        connection_data = get_connection_data()
+        # connection_data = get_connection_data()
+        connection_data = os.getenv("HEROKU_DB")
     try:
         connect_str = "dbname={} user={} host={} password={}".format(
             connection_data["dbname"],
