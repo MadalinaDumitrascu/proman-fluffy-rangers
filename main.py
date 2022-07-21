@@ -5,7 +5,7 @@ from util import json_response
 import mimetypes
 import queries
 from flask_session import Session
-import util
+import util, templates
 
 mimetypes.add_type("application/javascript", ".js")
 app = Flask(__name__)
@@ -32,6 +32,8 @@ def get_boards():
     if session:
         username = session['logged_in']
         return queries.get_boards_id(username)
+    boards=queries.get_boards_id()
+    print(boards)
     return queries.get_boards_id()
 
 

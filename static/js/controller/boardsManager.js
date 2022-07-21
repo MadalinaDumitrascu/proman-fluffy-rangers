@@ -7,7 +7,7 @@ import {cardsManager} from "./cardsManager.js";
 export let boardsManager = {
     loadBoards: async function () {
         const boards = await dataHandler.getBoards();
-
+        console.log(boards)
         for (let board of boards) {
             const columns = await dataHandler.getStatuses(board.id)
 
